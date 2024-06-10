@@ -1,0 +1,12 @@
+{
+    "https://rsc-prd/": {
+        "server_url": "https://rsc-prd/",
+        "filename": "C:\\Users\\332788\\Documents\\repos\\census",
+        "app_url": "https://rsc-prd/content/49a4bdd1-ab21-42b9-b2d5-b78b5aa8f1e3/",
+        "app_id": "49a4bdd1-ab21-42b9-b2d5-b78b5aa8f1e3",
+        "app_guid": "49a4bdd1-ab21-42b9-b2d5-b78b5aa8f1e3",
+        "title": "census",
+        "app_mode": "python-streamlit",
+        "app_store_version": 1
+    }
+}

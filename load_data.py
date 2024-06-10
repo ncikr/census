@@ -30,4 +30,5 @@ def load_census_data():
                                 'sexual_orientation' : 'Sexual Orientation',
                                 'year' : 'Year'})
 
-    return pop
+
+    pop.to_csv('data.csv', index = False)
