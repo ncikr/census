@@ -73,13 +73,13 @@ chart.animate(Config({"title": "...the adult population could be seen in full te
 
 # polar chart for 2021
 
-filter1 = Data.filter(
+filter_2021 = Data.filter(
     """
     record['Year'] == '2021-01-01' 
     """
 )
 
-chart.animate(filter1,
+chart.animate(filter_2021,
               Config({"channels": {
                             "label": {"attach": ["Population (M)"]},
                              "x": {"detach": ["Year"],
@@ -100,6 +100,7 @@ chart.animate(Config({"title": "Around 1.5 million people identified as non-hete
                      )
               )
 
+# pie chart
 chart.animate(Config({"title": "...or 3.2% of the population.",
                       "channels": {
                           "label": {"detach": ["Population (M)"]},
@@ -109,6 +110,29 @@ chart.animate(Config({"title": "...or 3.2% of the population.",
                      ),
               delay = 3
               )
+
+# location chart
+filter_lgb = Data.filter(
+    """
+    record['Sexual Orientation'] == 'Gay or Lesbian' || 
+    record['Sexual Orientation'] == 'Bisexual' || 
+    record['Sexual Orientation'] == 'Other'
+    """
+)
+
+chart.animate(filter_lgb,
+              Config({"title": "How is the LGB+ community distributed across England & Wales?",
+                      "geometry":"circle",
+                      "channels": {
+                          "x": {"set":None},
+                          "y": {"set":None},
+                          "size": {"attach":"Population (M)"}
+                        }
+                      },
+                     ),
+              delay = 3
+              )
+
 
 html(chart._repr_html_(), width=750, height=450)
 
