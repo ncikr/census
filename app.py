@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+import pandas
 from ipyvizzu import Chart, Data, Config, Style,  DisplayTarget
 from load_data import load_census_data
 from streamlit.components.v1 import html
@@ -13,7 +13,7 @@ if 'count' not in st.session_state:
     st.session_state.page_counter = 1
 
 # load data
-census_data = pd.read_csv('data.csv')
+census_data = load_census_data()
 data = Data()
 data.add_df(census_data)
 

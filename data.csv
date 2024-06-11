@@ -1,12 +1,12 @@
-,Year,Population (M),Sexual Orientation
-5,1961,34.91,Unknown
-4,1971,36.82,Unknown
-3,1981,38.72,Unknown
-2,1991,40.5,Unknown
-1,2001,41.86,Unknown
-0,2011,45.58,Unknown
-0,2021,0.17,Other
-1,2021,0.62,Bisexual
-3,2021,0.75,Gay or Lesbian
-4,2021,3.63,Not answered
-5,2021,43.4,Straight or Heterosexual
+Year,Population (M),Sexual Orientation
+1961,34.91,Unknown
+1971,36.82,Unknown
+1981,38.72,Unknown
+1991,40.5,Unknown
+2001,41.86,Unknown
+2011,45.58,Unknown
+2021,0.17,Other
+2021,0.62,Bisexual
+2021,0.75,Gay or Lesbian
+2021,3.63,Not answered
+2021,43.4,Straight or Heterosexual
