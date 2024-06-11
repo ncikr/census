@@ -6,3 +6,10 @@ headless = false
 serverAddress = "0.0.0.0"
 gatherUsageStats = false
 serverPort = 8501
+
+[theme]
+primaryColor="#3CD7D9"
+backgroundColor="#12273F"
+secondaryBackgroundColor="#415265"
+textColor="#ffffff"
+font="sans serif"

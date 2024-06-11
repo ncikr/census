@@ -38,7 +38,8 @@ def vizzu_bank_theme():
                         "fontSize": "1.166667em",
                     },
                     # plot stripes
-                    "interlacing": {"color": "#415265"},
+                    "interlacing": {"color": "#12273F"},                    
+                    # "interlacing": {"color": "#415265"},
                 },
                 "xAxis": {
                     "label": {"color": "#ffffff", "fontSize": "1em"},
@@ -47,7 +48,8 @@ def vizzu_bank_theme():
                         "fontSize": "1.166667em",
                     },
                     # plot stripes                    
-                    "interlacing": {"color": "#415265"},
+                    "interlacing": {"color": "#12273F"},
+                    #"interlacing": {"color": "#415265"},
                 },
                 "paddingLeft": 100, 
                 "paddingRight": 100,
