@@ -3,7 +3,6 @@ import pandas as pd
 from ipyvizzu import Chart, Data, Config, Style,  DisplayTarget
 from load_data import load_census_data
 from streamlit.components.v1 import html
-from render_chart import *
 from bank_theme import vizzu_bank_theme
 
 st.title("")
@@ -17,7 +16,7 @@ pop_2021 = pd.read_excel('data\msoa_pop_by_orientation.xlsx')[['Sexual orientati
 
 # cleaning
 pop_2021 = pop_2021.rename(columns = {'Sexual orientation (6 categories)' : 'sexual_orientation', 'Observation' : 'population'})
-pop_2021 = pop_2021.groupby(['sexual_orientation']).sum().reset_index()
+# pop_2021 = pop_2021.groupby(['sexual_orientation']).sum().reset_index()
 pop_2021 = pop_2021[pop_2021['sexual_orientation'] != 'Does not apply']
 pop_2021 = pop_2021.replace('All other sexual orientations', 'Other')
 pop_2021['year'] = 2021
