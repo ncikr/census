@@ -3,7 +3,6 @@ enableCORS = false
 headless = false
 
 [browser]
-serverAddress = "0.0.0.0"
 gatherUsageStats = false
 serverPort = 8501
 

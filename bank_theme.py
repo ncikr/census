@@ -69,6 +69,7 @@ def vizzu_bank_theme():
             "logo": {
                 "filter": "color(#12273F)",
             },
+            "legend": {"width": 160}
         }
     )
     
