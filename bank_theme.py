@@ -17,7 +17,7 @@ def vizzu_bank_theme():
                 },
                 "title": {
                     "color": "#ffffff",
-                    "fontSize": "1.166667em",
+                    "fontSize": "0.5em",
                     "textAlign": "left",
                 },
             },
@@ -27,8 +27,9 @@ def vizzu_bank_theme():
                     + "#58508d 0.25, "
                     + "#bc5090 0.5, "
                     + "#ff6361 0.75, "
-                    + "#ffa600 1",
-                    "colorPalette": "#3CD7D9 #FF7300 #9E71FE #D4AF37 #A5D700 #FF50C8 #5297FF"
+                    + "#ffa600 1",   
+                    "colorPalette": "#3CD7D9 #FF7300 #9E71FE #D4AF37 #A5D700 #FF50C8 #5297FF #FFD200 #FF9173 #FE015B",
+                    "guides":{"color":"#12273F"}
                 },
                 "yAxis": {
                     "color": "#CCCCCCFF",
@@ -38,8 +39,7 @@ def vizzu_bank_theme():
                         "fontSize": "1.166667em",
                     },
                     # plot stripes
-                    "interlacing": {"color": "#12273F"},                    
-                    # "interlacing": {"color": "#415265"},
+                    "interlacing": {"color": "#12273F"}
                 },
                 "xAxis": {
                     "label": {"color": "#ffffff", "fontSize": "1em"},
@@ -49,14 +49,13 @@ def vizzu_bank_theme():
                     },
                     # plot stripes                    
                     "interlacing": {"color": "#12273F"},
-                    #"interlacing": {"color": "#415265"},
                 },
                 "paddingLeft": 100, 
                 "paddingRight": 100,
             },
             "title": {
                 "color": "#f7f7f7",
-                "fontSize": "2.166667em",
+                "fontSize": "1.5em",
                 "textAlign": "center",
             },
             "tooltip": {

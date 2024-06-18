@@ -1,5 +1,4 @@
 import pandas as pd
-import streamlit as st
     
 # read historical population data
 # https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/adhocs/005825populationestimatesforenglandandwales1961to2014singleyearofage0to105
@@ -38,35 +37,48 @@ pop_2021['MSOA %'] = 100 * pop_2021['Population'] / pop_2021['MSOA Population']
 pop_2021['UTLA %'] = 100 * pop_2021['Population'] / pop_2021['UTLA Population']
 
 # append historical pop data
-pop = pop_2021._append(pop_historical)
+pop = pop_2021._append(pop_historical).sort_values(['Year','Population'], ascending=[True, False])
 pop['Year'] = pop['Year'].astype(str)
 
 ## industry data ##    
 # https://www.ons.gov.uk/datasets/RM184/editions/2021/versions/7/filter-outputs/db062759-a153-46a0-b1f9-f52b2acacc91#get-data
 industry = pd.read_excel('data\industry.xlsx')[['UTLA Code','UTLA','Industry','Sexual Orientation', 'Population']]
+industry = industry.replace('All other sexual orientations', 'Other')
+industry = industry[industry['Sexual Orientation'] != "Does not apply"]
+industry = industry[industry['Industry'].notna()]
+industry = industry.sort_values(['Population'], ascending=False)
+
+industry = industry[['UTLA Code', 'Industry', 'Sexual Orientation','Population']].groupby(['UTLA Code','Sexual Orientation','Industry']).sum().reset_index()
+
+industry_agg_utla = industry.groupby('UTLA Code').sum().reset_index().rename(columns = {'Population' : 'UTLA Population'})
+industry_agg_ind = industry.groupby(['UTLA Code','Industry']).sum().reset_index().rename(columns = {'Population' : 'Industry Population'})
+industry_agg = industry_agg_ind.merge(industry_agg_utla[['UTLA Code','UTLA Population']], how='left')
+industry_agg['Industry % in UTLA'] = 100 * industry_agg['Industry Population'] / industry_agg['UTLA Population']
+
+industry = industry.merge(industry_agg[['UTLA Code','Industry','Industry Population','UTLA Population','Industry % in UTLA']], how='left')
+industry['SO % in Industry'] = 100 * industry['Population'] / industry['Industry Population']
+
 industry['Dataset'] = 'industry'
+
+industry = industry.sort_values('Industry % in UTLA')
+
 pop_with_ind = pop._append(industry)
-
-pop_ind_agg = pop_with_ind[['UTLA Code', 'Industry', 'Sexual Orientation','Population']].groupby(['UTLA Code','Industry']).sum().reset_index()
-
-pop_ind_agg = pop_ind_agg.rename(columns = {'Population' : 'Industry Population'})
-
-pop_with_ind = pop_with_ind.merge(pop_ind_agg[['UTLA Code','Industry','Industry Population']], how='left')
-
-pop_with_ind['Industry %'] = 100 * pop_with_ind['Population'] / pop_with_ind['Industry Population']
 
 ## age data ##
 # https://www.ons.gov.uk/filters/3971c223-d948-4084-b74e-841cb5e876e3/dimensions
 
 age = pd.read_excel('data\\age.xlsx')[['UTLA Code','UTLA','Age','Sexual Orientation', 'Population']]
+age = age[age['Population'] != 0]
+age = age[age['Age'] != '<15'].sort_values(['UTLA','Age'], ascending=True)
 
-age_agg = age[['UTLA Code', 'Age', 'Sexual Orientation','Population']].groupby(['UTLA Code','Age']).sum().reset_index()
+age = age[['Age', 'Sexual Orientation','Population']].groupby(['Age','Sexual Orientation']).sum().reset_index()
 
-age_agg = age_agg.rename(columns = {'Population' : 'Age Population'})
+age_agg = age.groupby('Sexual Orientation').sum().reset_index()[['Sexual Orientation', 'Population']]
+age_agg = age_agg.rename(columns = {'Population':'Total Population'})
 
-age = age.merge(age_agg[['UTLA Code','Age','Age Population']], how='left')
+age = age.merge(age_agg, how='left')
+age['Age %'] = 100 * age['Population'] / age['Total Population']
 
-age['Age %'] = 100 * age['Population'] / age['Age Population']
 age['Dataset'] = 'Age'
 
 pop_with_age = pop_with_ind._append(age)
