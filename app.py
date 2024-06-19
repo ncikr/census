@@ -262,7 +262,7 @@ chart.animate(
 
 chart.animate(
     Config({"title": 
-        "Maybe cities offer career opportunities in LGB+ more friendly industries?"}),
+        "Maybe cities offer more career opportunities in LGB+ friendly industries?"}),
     delay = delay_time
 )
 
@@ -370,7 +370,7 @@ chart.animate(
 
 chart.animate(
     Config({"title": 
-        "...and as young people are generally more attracted to cities for their career opportunities and nightlife..."}),
+        "...and as young people are generally more attracted to cities for their career opportunities..."}),
     delay = delay_time
 )
 
@@ -394,9 +394,10 @@ chart.animate(
     delay = delay_time
 )
 
-
-
-
 html(chart._repr_html_(), width=750, height=450)
 
-st.caption("Source: ONS")
+st.caption("Source: ONS.gov.uk, data.gov.uk, House of Commons Library")
+st.caption("")
+st.caption('Glossary:')
+st.caption("MSOA: Middle Layer Super Output Area")
+st.caption("UTLA: Upper Tier Local Authority")
